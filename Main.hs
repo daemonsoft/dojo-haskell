@@ -34,6 +34,13 @@ instance  FromRow Menu where
 instance ToRow Menu where
 	toRow d = [toField (idMenu d), toField (name d), toField (description d), toField (price d), toField (restaurant d)]
    
+
+getAllMenus :: Connection -> IO [Menu]
+getAllMenus c = do
+  list <- (query_ c "select * from menu" :: IO [Menu])
+  return list    
+    
+    
 main = do
   putStrLn "Starting Server..."
   conn <- connectPostgreSQL  "postgres://xlyrtaxdwdozqh:ml6B7YXEWvGLdpcw5ty-BDrcne@ec2-50-19-240-113.compute-1.amazonaws.com:5432/dcku066iig1lq1"
