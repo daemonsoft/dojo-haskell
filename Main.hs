@@ -28,7 +28,7 @@ matchesId id menu = case idMenu menu of
 	Nothing -> False 
 	Just int -> int == id 
 
-instance  FromRow Menu where fromRow Menu where 
+instance  FromRow Menu where 
 	fromRow = Menu <$> field <*> field <*> field <*> field <*> field
 
 instance ToRow Menu where
